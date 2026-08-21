@@ -2,6 +2,8 @@
 
 A production-ready job portal for job seekers and recruiters, built with React, Express, and PostgreSQL.
 
+**Live demo:** [career-canvas-job-portal.onrender.com](https://career-canvas-job-portal.onrender.com)
+
 ## Features
 
 - JWT authentication with recruiter and job-seeker roles
