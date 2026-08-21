@@ -23,6 +23,17 @@ A production-ready job portal for job seekers and recruiters, built with React, 
 - `database/` — PostgreSQL schema and seed scripts
 - `screenshots/` — portfolio screenshots
 
+## How a request moves through the project
+
+1. A user performs an action in the React interface.
+2. Axios sends an HTTP request to an Express route.
+3. Authentication middleware checks the JWT and user role when required.
+4. A controller validates the input and runs a parameterized SQL query.
+5. PostgreSQL returns the result, which Express sends back as JSON.
+6. React updates the page with the returned data.
+
+The code intentionally uses direct SQL through `pg` instead of an ORM so the database queries and relationships remain visible for learning and interviews.
+
 ## Getting started
 
 1. Create a PostgreSQL database named `job_portal`.
