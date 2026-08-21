@@ -4,6 +4,8 @@ exports.create = async (req, res, next) => {
   try {
     if (!req.body.jobId) return res.status(400).json({ message: 'A job is required.' });
     if (!req.file) return res.status(400).json({ message: 'Please attach your resume.' });
+    // Resumes are stored in PostgreSQL because free cloud servers use an
+    // temporary filesystem that can be cleared when the service restarts.
     const result = await pool.query(
       `INSERT INTO applications (job_id, applicant_id, resume_name, resume_mime, resume_data)
        VALUES ($1,$2,$3,$4,$5) RETURNING id, job_id, applicant_id, status, created_at`,

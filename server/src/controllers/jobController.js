@@ -1,6 +1,7 @@
 const pool = require('../config/database');
 
 async function replaceJobSkills(client, jobId, skills = []) {
+  // Form input can arrive either as an array or as comma-separated text.
   const normalized = [...new Set((Array.isArray(skills) ? skills : String(skills).split(','))
     .map((skill) => skill.trim()).filter(Boolean).slice(0, 20))];
   await client.query('DELETE FROM job_skills WHERE job_id = $1', [jobId]);
@@ -95,6 +96,8 @@ exports.update = async (req, res, next) => {
 
 exports.recommended = async (req, res, next) => {
   try {
+    // The score is the percentage of required job skills found in the
+    // current seeker's profile. Jobs without listed skills receive zero.
     const result = await pool.query(
       `SELECT j.*, COALESCE(array_agg(DISTINCT s.name) FILTER (WHERE s.name IS NOT NULL), '{}') AS skills,
        CASE WHEN COUNT(DISTINCT js.skill_id) = 0 THEN 0 ELSE
