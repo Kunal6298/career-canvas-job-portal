@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: career-canvas-job-portal
+    name: candidarc-job-portal
     runtime: node
     plan: free
     region: singapore

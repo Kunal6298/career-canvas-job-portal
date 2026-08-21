@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="container nav-content">
-        <Link className="brand" to="/">Job Portal</Link>
+        <Link className="brand" to="/">CandidArc</Link>
         <nav>
           <NavLink to="/jobs">Jobs</NavLink>
           {user?.role === 'recruiter' && <NavLink to="/recruiter">Recruiter</NavLink>}

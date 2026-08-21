@@ -1,4 +1,4 @@
-# CareerCanvas — Full-Stack Job Portal
+# CandidArc — Full-Stack Job Portal
 
 A production-ready job portal for job seekers and recruiters, built with React, Express, and PostgreSQL.
 
