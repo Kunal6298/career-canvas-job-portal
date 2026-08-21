@@ -9,3 +9,4 @@ server/uploads/*
 Thumbs.db
 .vscode/
 coverage/
+.tools/
