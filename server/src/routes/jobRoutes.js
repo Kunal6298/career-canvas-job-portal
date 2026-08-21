@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const controller = require('../controllers/jobController');
+const authenticate = require('../middleware/authenticate');
+const authorizeRole = require('../middleware/authorizeRole');
+router.get('/', controller.list);
+router.get('/recommended', authenticate, authorizeRole('seeker'), controller.recommended);
+router.get('/mine', authenticate, authorizeRole('recruiter'), controller.mine);
+router.get('/:id', controller.getOne);
+router.post('/', authenticate, authorizeRole('recruiter'), controller.create);
+router.patch('/:id', authenticate, authorizeRole('recruiter'), controller.update);
+module.exports = router;

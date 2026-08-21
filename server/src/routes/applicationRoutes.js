@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const controller = require('../controllers/applicationController');
+const authenticate = require('../middleware/authenticate');
+const authorizeRole = require('../middleware/authorizeRole');
+const upload = require('../middleware/uploadResume');
+router.post('/', authenticate, authorizeRole('seeker'), upload.single('resume'), controller.create);
+router.get('/me', authenticate, authorizeRole('seeker'), controller.myApplications);
+router.get('/recruiter', authenticate, authorizeRole('recruiter'), controller.recruiterApplications);
+router.patch('/:id/status', authenticate, authorizeRole('recruiter'), controller.updateStatus);
+router.get('/:id/resume', authenticate, controller.downloadResume);
+module.exports = router;
