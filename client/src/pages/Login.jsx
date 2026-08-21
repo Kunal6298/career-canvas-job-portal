@@ -48,7 +48,7 @@ export default function Login() {
 export function AuthForm({ title, onSubmit, error, footer, children }) {
   return (
     <section className="auth-card card">
-      <span className="eyebrow">Job Portal</span>
+      <span className="eyebrow">CandidArc</span>
       <h1>{title}</h1>
       <form onSubmit={onSubmit}>
         {children}
